@@ -33,15 +33,10 @@ jobs:
           key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-wrapper-
-#      - name: Publish
-#        run: ./gradlew check publishPlugin -PdownloadIdeaSources=false -PintellijPublishToken="$INTELLIJ_PUBLISH_TOKEN"
-#        env:
-#          INTELLIJ_PUBLISH_TOKEN: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
-      - name: changelog
-        uses: ScottBrenner/generate-changelog-action@1.0.0
-        id: Changelog
+      - name: Publish
+        run: ./gradlew check publishPlugin -PdownloadIdeaSources=false -PintellijPublishToken="$INTELLIJ_PUBLISH_TOKEN"
         env:
-          REPO: ${{ github.repository }}
+          INTELLIJ_PUBLISH_TOKEN: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
       - name: Create Github release
         uses: actions/create-release@v1
         env:
@@ -49,6 +44,4 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            ${{ steps.Changelog.outputs.changelog }}
           draft: true
