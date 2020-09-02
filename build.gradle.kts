@@ -3,12 +3,12 @@ import org.jetbrains.intellij.tasks.PublishTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.3.70"
-  id("org.jetbrains.intellij") version "0.4.16"
+  kotlin("jvm") version "1.3.72"
+  id("org.jetbrains.intellij") version "0.4.21"
 }
 
 intellij {
-  version = "IC-2019.3" //IntelliJ IDEA 2019.3 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
+  version = "IC-2020.1" //IntelliJ IDEA 2020.1 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
   pluginName = "JCV"
   updateSinceUntilBuild = false //Disables updating since-build attribute in plugin.xml
 }
@@ -37,8 +37,22 @@ tasks {
   }
 
   patchPluginXml {
-    pluginDescription(file("src/main/resources/META-INF/description.html").readText())
-    changeNotes(file("src/main/resources/META-INF/changes.html").readText())
+    fun fileInMetaInf(fileName: String) = file("src/main/resources/META-INF").resolve(fileName)
+
+    fun String.replaceGitHubContentUrl(projectVersion: String): String = when {
+      projectVersion.endsWith("-SNAPSHOT") -> "master"
+      else -> projectVersion
+    }
+      .let { targetGitHubBranchName ->
+        this.replace(
+          "{{GIT_HUB_BRANCH}}",
+          targetGitHubBranchName
+        )
+      }
+
+    val version: String by project
+    pluginDescription(fileInMetaInf("description.html").readText().replaceGitHubContentUrl(version))
+    changeNotes(fileInMetaInf("changes.html").readText())
   }
 
   create("printVersion") {

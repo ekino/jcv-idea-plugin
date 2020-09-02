@@ -7,7 +7,7 @@
     <description><![CDATA[ Description will be added by gradle build]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="183.0" />
+    <idea-version since-build="201.6668" />
 
     <depends>com.intellij.modules.platform</depends>
 
