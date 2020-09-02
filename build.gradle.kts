@@ -8,7 +8,7 @@ plugins {
 }
 
 intellij {
-  version = "IC-2019.3" //IntelliJ IDEA 2019.3 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
+  version = "IC-2020.1" //IntelliJ IDEA 2020.1 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
   pluginName = "JCV"
   updateSinceUntilBuild = false //Disables updating since-build attribute in plugin.xml
 }
