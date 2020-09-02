@@ -37,8 +37,22 @@ tasks {
   }
 
   patchPluginXml {
-    pluginDescription(file("src/main/resources/META-INF/description.html").readText())
-    changeNotes(file("src/main/resources/META-INF/changes.html").readText())
+    fun fileInMetaInf(fileName: String) = file("src/main/resources/META-INF").resolve(fileName)
+
+    fun String.replaceGitHubContentUrl(projectVersion: String): String = when {
+      projectVersion.endsWith("-SNAPSHOT") -> "master"
+      else -> projectVersion
+    }
+      .let { targetGitHubBranchName ->
+        this.replace(
+          "{{GIT_HUB_BRANCH}}",
+          targetGitHubBranchName
+        )
+      }
+
+    val version: String by project
+    pluginDescription(fileInMetaInf("description.html").readText().replaceGitHubContentUrl(version))
+    changeNotes(fileInMetaInf("changes.html").readText())
   }
 
   create("printVersion") {
