@@ -1,5 +1,3 @@
-[*]
-indent_size = 2
-
-[*.{kt, kts}]
+[*.{kt,kts}]
 disabled_rules = import-ordering
+indent_size = 2

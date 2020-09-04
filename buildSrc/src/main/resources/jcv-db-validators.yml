@@ -1,7 +1,0 @@
-group: "JCV DB"
-validators:
-  - name: "{#mongo_id#}"
-    description: "Mongo ID format - JCV-DB validator"
-
-  - name: "{#json_array#}"
-    description: "Json array format - JCV-DB validator"
