@@ -8,13 +8,35 @@ IntelliJ IDEA plugin for an enhanced coding experience on JCV based projects.
 
 ## Table of contents
 
-* [JCV autocomplete](#jcv-autocomplete)
-    * [Validators covered](#validators-covered)
-    * [How it works](#how-it-works)
-        * [Live templates](#live-templates)
-        * [Macros](#macros)
-    
-## JCV autocomplete
+* [Syntax Highlighting](#syntax-highlighting)
+* [Validator auto-completion](#validator-auto-completion)
+* [Replacement suggestions](#replacement-suggestions)
+
+## Syntax Highlighting
+
+It provides template colors and information about known JCV validators:
+
+![](./screenshots/jcv-syntax_highlighting.png)
+
+It will also detect invalid usages and give quick-fixes when possible:
+
+![](./screenshots/jcv-validation-unexpected_whitespaces.png)
+
+![](./screenshots/jcv-validation-unexpected_param.png)
+
+![](./screenshots/jcv-validation-empty_param.png)
+
+## Validator auto-completion
+
+It provides autocompletion for jcv validators in json files.
+
+Just start typing "{#" or any jcv validator id and press ctrl+space to see all the suggested validators:
+
+![](./screenshots/jcv-autocomplete_all.png)
+
+It also works for templated validators with suggested values:
+
+![](./screenshots/jcv-autocomplete_param.png)
 
 ### Validators covered
 [JCV](https://github.com/ekino/jcv) is a library allowing you to compare JSON contents with embedded validation.
@@ -26,20 +48,8 @@ designed to cover the most common needs when validating data with non-predictabl
 
 This plugin offers autocompletion on all the validators of these two projects to date.
 
-### How it works
+## Replacement suggestions
 
-#### Live templates
-The plugin uses [live templates](https://www.jetbrains.com/help/idea/using-live-templates.html) to offer autocompletion 
-on validators (including the ones with parameters).
+It will suggest smart replacements of json value to matching validators:
 
-It will generate two sets of live templates in your IDEA configuration:
-![](./screenshots/live_templates.png)
-
-#### Macros
-JCV plugin will generate two macros that are used in the JCV live templates (macros are functions that can be used in 
-[live template variables](https://www.jetbrains.com/help/idea/template-variables.html)). They are common to all the live templates,
-so you can use these new ones for other purposes too.
-
-These macros are:
-* `dateFormats()`: it returns a list of date-time formats, with `iso_instant` as its default value
-* `languages()`: it returns a list of available languages (based on `java.util.Locale`), with `fr` as its default value
+![](./screenshots/jcv-suggestion-date_time_format.png)

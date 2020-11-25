@@ -7,17 +7,18 @@
     <description><![CDATA[ Description will be added by gradle build]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="201.6668" />
+    <idea-version since-build="201.6668"/>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <defaultLiveTemplatesProvider implementation="com.ekino.oss.jcv.idea_plugin.autocomplete.JcvTemplateProvider" />
-        <liveTemplateMacro implementation="com.ekino.oss.jcv.idea_plugin.autocomplete.macro.DateFormatMacro" />
-        <liveTemplateMacro implementation="com.ekino.oss.jcv.idea_plugin.autocomplete.macro.LanguagesMacro" />
+        <annotator language="JSON"
+                   implementationClass="com.ekino.oss.jcv.idea_plugin.annotator.JcvValidatorAnnotator"
+        />
+        <completion.contributor language="JSON"
+                                implementationClass="com.ekino.oss.jcv.idea_plugin.autocomplete.JcvValidatorContributor"/>
     </extensions>
 
-    <change-notes><![CDATA[	Change notes will be filled by gradle build ]]>
-    </change-notes>
+    <change-notes><![CDATA[	Change notes will be filled by gradle build ]]></change-notes>
 
 </idea-plugin>

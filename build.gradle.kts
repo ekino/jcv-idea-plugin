@@ -1,14 +1,14 @@
-import com.ekino.oss.jcv.idea_plugin.autocomplete.template_generator.TemplateGeneratorTask
 import org.jetbrains.intellij.tasks.PublishTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.3.72"
-  id("org.jetbrains.intellij") version "0.4.21"
+  kotlin("jvm") version "1.4.20"
+  id("org.jetbrains.intellij") version "0.6.4"
 }
 
 intellij {
-  version = "IC-2020.1" //IntelliJ IDEA 2020.1 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
+  version =
+    "IC-2020.1" //IntelliJ IDEA 2020.1 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
   pluginName = "JCV"
   updateSinceUntilBuild = false //Disables updating since-build attribute in plugin.xml
 }
@@ -18,17 +18,31 @@ repositories {
 }
 
 dependencies {
+  implementation("org.apache.commons:commons-text:1.9")
+
   testImplementation("com.willowtreeapps.assertk:assertk-jvm:${property("assertk-jvm.version")}")
   testImplementation("org.junit.jupiter:junit-jupiter:${property("junit.version")}")
+  testImplementation("junit:junit:4.13")
+  testRuntimeOnly("org.junit.vintage:junit-vintage-engine:${property("junit.version")}")
 }
 
 tasks {
   withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+    kotlinOptions.apiVersion = "1.3"
   }
 
   withType<Test> {
-    useJUnitPlatform()
+    useJUnitPlatform {
+      includeEngines = setOf("junit-jupiter", "junit-vintage")
+    }
+    jvmArgs(
+      "-Djunit.jupiter.testinstance.lifecycle.default=per_class",
+      "-Duser.language=en"
+    )
+    testLogging {
+      events("passed", "skipped", "failed")
+    }
   }
 
   withType<PublishTask> {
@@ -60,15 +74,6 @@ tasks {
       val version: String by project
       println(version)
     }
-  }
-
-  create(name = "generateTemplates", type = TemplateGeneratorTask::class) {
-    resourceFiles = setOf("jcv", "jcv-db")
-      .associateWith { file("$buildDir/resources/main/$it.xml") }
-  }
-
-  named("jar").configure {
-    dependsOn("generateTemplates")
   }
 }
 
