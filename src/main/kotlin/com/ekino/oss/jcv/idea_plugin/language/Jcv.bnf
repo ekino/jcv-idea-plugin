@@ -1,0 +1,38 @@
+{
+  parserClass="com.ekino.oss.jcv.idea_plugin.language.parser.JcvParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Jcv"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.ekino.oss.jcv.idea_plugin.language.psi"
+  psiImplPackage="com.ekino.oss.jcv.idea_plugin.language.psi.impl"
+
+  elementTypeHolderClass="com.ekino.oss.jcv.idea_plugin.language.psi.JcvTypes"
+  elementTypeClass="com.ekino.oss.jcv.idea_plugin.language.psi.JcvElementType"
+  tokenTypeClass="com.ekino.oss.jcv.idea_plugin.language.psi.JcvTokenType"
+
+  psiImplUtilClass="com.ekino.oss.jcv.idea_plugin.language.psi.impl.JcvPsiImplUtil"
+}
+
+jcvFile ::= validator
+
+validator ::= VALIDATOR_START_MARKER VALIDATOR_ID parameters? VALIDATOR_END_MARKER {
+    pin=2
+    mixin="com.ekino.oss.jcv.idea_plugin.language.psi.impl.JcvNamedElementImpl"
+    implements="com.ekino.oss.jcv.idea_plugin.language.psi.JcvNamedElement"
+    methods=[getValidatorId getValidatorIdElement getName setName getNameIdentifier getTextOffset getPresentation]
+}
+
+parameters ::= PARAMETERS_START_MARKER parameterEntry* {
+    pin(".*")=1
+    recoverWhile=parameterRecover
+    methods=[getIndexedParameters]
+}
+
+parameterEntry ::= PARAMETER | PARAMETER_SEPARATOR PARAMETER? {
+    recoverWhile=parameterRecover
+    methods=[getIndex getSeparator getParameterValue]
+}
+
+private parameterRecover ::= !(VALIDATOR_END_MARKER|PARAMETER_SEPARATOR|PARAMETER|PARAMETERS_START_MARKER)

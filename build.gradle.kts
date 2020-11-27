@@ -2,7 +2,7 @@ import org.jetbrains.intellij.tasks.PublishTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.4.20"
+  kotlin("jvm") version "1.4.21"
   id("org.jetbrains.intellij") version "0.6.4"
 }
 
@@ -20,11 +20,16 @@ repositories {
 dependencies {
   implementation("org.apache.commons:commons-text:1.9")
 
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.+")
+  implementation(kotlin("reflect"))
+
   testImplementation("com.willowtreeapps.assertk:assertk-jvm:${property("assertk-jvm.version")}")
   testImplementation("org.junit.jupiter:junit-jupiter:${property("junit.version")}")
   testImplementation("junit:junit:4.13")
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine:${property("junit.version")}")
 }
+
+sourceSets["main"].java.srcDirs("src/main/gen")
 
 tasks {
   withType<KotlinCompile> {
