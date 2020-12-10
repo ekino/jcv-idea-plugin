@@ -74,6 +74,9 @@ val validators = listOf(
     id = "string_type"
   ),
   TemplatedValidator(
+    id = "number_type"
+  ),
+  TemplatedValidator(
     id = "array_type"
   ),
   TemplatedValidator(

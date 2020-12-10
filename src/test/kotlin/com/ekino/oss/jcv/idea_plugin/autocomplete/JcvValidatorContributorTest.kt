@@ -36,6 +36,7 @@ class JcvValidatorContributorTest : LightPlatformCodeInsightFixture4TestCase() {
       "mongo_id",
       "not_empty",
       "not_null",
+      "number_type",
       "object_type",
       "regex:",
       "starts_with:",
