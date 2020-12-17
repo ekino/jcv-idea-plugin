@@ -221,7 +221,8 @@ abstract class JcvReplacementSuggestionsUseCasesTest : JcvReplacementSuggestions
 
     // Given
     //language=json
-    val textValue = """{ "field": "Some value" }"""
+    val textValue =
+      """{ "field": "Some value" }"""
     val jsonValue = JsonElementGenerator(project).createValue<JsonObject>(textValue)
 
     // When
@@ -237,7 +238,8 @@ abstract class JcvReplacementSuggestionsUseCasesTest : JcvReplacementSuggestions
 
     // Given
     //language=json
-    val textValue = """[ "Some value" ]"""
+    val textValue =
+      """[ "Some value" ]"""
     val jsonValue = JsonElementGenerator(project).createValue<JsonArray>(textValue)
 
     // When

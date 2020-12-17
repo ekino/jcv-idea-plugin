@@ -6,7 +6,8 @@ import com.intellij.json.psi.JsonStringLiteral
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.parentOfType
 
-private val JCV_CANDIDATE_MATCHER = """^\s*\{#.*""".toRegex()
+private val JCV_CANDIDATE_MATCHER =
+  """^\s*\{#.*""".toRegex()
 
 object JcvUtil {
 

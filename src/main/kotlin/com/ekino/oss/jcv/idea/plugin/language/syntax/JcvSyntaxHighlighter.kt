@@ -15,19 +15,23 @@ class JcvSyntaxHighlighter : SyntaxHighlighterBase() {
 
   companion object {
     val VALIDATOR_MARKERS = createTextAttributesKey(
-      "JCV.VALIDATOR_MARKERS", DefaultLanguageHighlighterColors.KEYWORD
+      "JCV.VALIDATOR_MARKERS",
+      DefaultLanguageHighlighterColors.KEYWORD
     )
 
     val VALIDATOR_ID = createTextAttributesKey(
-      "JCV.VALIDATOR_ID", DefaultLanguageHighlighterColors.IDENTIFIER
+      "JCV.VALIDATOR_ID",
+      DefaultLanguageHighlighterColors.IDENTIFIER
     )
 
     val VALIDATOR_PARAMETER = createTextAttributesKey(
-      "JCV.VALIDATOR_PARAMETER", DefaultLanguageHighlighterColors.STRING
+      "JCV.VALIDATOR_PARAMETER",
+      DefaultLanguageHighlighterColors.STRING
     )
 
     val BAD_CHARACTER = createTextAttributesKey(
-      "JCV.BAD_CHARACTER", HighlighterColors.BAD_CHARACTER
+      "JCV.BAD_CHARACTER",
+      HighlighterColors.BAD_CHARACTER
     )
 
     private val tokenToTextAttributesKey = mapOf(

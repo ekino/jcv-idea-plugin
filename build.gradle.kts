@@ -134,7 +134,7 @@ tasks {
           // Replace local url with GitHub base url and set width to 500px
           .replace(
             """src="./""",
-            """width="500" src="${gitHubContentBasePath}/${gitHubRef}/"""
+            """width="500" src="$gitHubContentBasePath/$gitHubRef/"""
           )
       }
     )

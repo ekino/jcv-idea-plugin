@@ -13,7 +13,8 @@ class JcvInspectionsWithLibsTest : JcvBasePlatformTestCase() {
   fun `test nothing to report on correct known validator`() {
 
     // Given
-    val code = """{#date_time_format:iso_instant;fr-FR#}"""
+    val code =
+      """{#date_time_format:iso_instant;fr-FR#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -28,7 +29,10 @@ class JcvInspectionsWithLibsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 }

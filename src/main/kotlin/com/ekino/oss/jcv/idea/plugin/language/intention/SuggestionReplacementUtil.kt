@@ -17,8 +17,10 @@ import java.net.URISyntaxException
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
-private val UUID_REGEX = """^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$""".toRegex()
-private val MONGO_ID_REGEX = """^[a-f\d]{24}$""".toRegex()
+private val UUID_REGEX =
+  """^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$""".toRegex()
+private val MONGO_ID_REGEX =
+  """^[a-f\d]{24}$""".toRegex()
 private val DATE_FORMATTERS by lazy {
   listOf(
     "basic_iso_date" to DateTimeFormatter.BASIC_ISO_DATE,

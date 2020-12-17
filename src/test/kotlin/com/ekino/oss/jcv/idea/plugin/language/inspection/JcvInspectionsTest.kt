@@ -9,7 +9,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
   fun `test unexpected white spaces error`() {
 
     // Given
-    val code = """{#my_validator#}"""
+    val code =
+      """{#my_validator#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -18,7 +19,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -27,7 +31,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val warning = HighlightingMessage.warning("Empty parameter")
 
-    val code = """{#my_validator:param 1${warning.wrap(";")};param3${warning.wrap(";")}#}"""
+    val code =
+      """{#my_validator:param 1${warning.wrap(";")};param3${warning.wrap(";")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -36,7 +41,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -45,7 +53,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val warning = HighlightingMessage.warning("Empty parameter")
 
-    val code = """{#my_validator${warning.wrap(":")}#}"""
+    val code =
+      """{#my_validator${warning.wrap(":")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -54,7 +63,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -63,7 +75,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val error = HighlightingMessage.error("Unexpected parameter")
 
-    val code = """{#contains:param1${error.wrap(";param 2")}${error.wrap(";param 3")}#}"""
+    val code =
+      """{#contains:param1${error.wrap(";param 2")}${error.wrap(";param 3")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -72,7 +85,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -81,7 +97,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val error = HighlightingMessage.error("Unexpected parameter")
 
-    val code = """{#uuid${error.wrap(":")}#}"""
+    val code =
+      """{#uuid${error.wrap(":")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -90,7 +107,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -99,7 +119,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val error = HighlightingMessage.error("""\"the text to search for\" parameter is required""")
 
-    val code = """{#${error.wrap("contains")}#}"""
+    val code =
+      """{#${error.wrap("contains")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -108,7 +129,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -117,7 +141,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val error = HighlightingMessage.error("""\"the text to search for\" parameter is required""")
 
-    val code = """{#contains${error.wrap(":")}#}"""
+    val code =
+      """{#contains${error.wrap(":")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -126,14 +151,18 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
   fun `test nothing to report on correct custom validator`() {
 
     // Given
-    val code = """{#my_validator:param 1;param 2#}"""
+    val code =
+      """{#my_validator:param 1;param 2#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -148,7 +177,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -157,7 +189,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val warning = HighlightingMessage.warning("""Missing validator library \"com.ekino.oss.jcv:jcv-core\"""")
 
-    val code = """{#${warning.wrap("uuid")}#}"""
+    val code =
+      """{#${warning.wrap("uuid")}#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -169,7 +202,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 
@@ -178,7 +214,8 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     // Given
     val warning = HighlightingMessage.warning("Unknown validator definition")
 
-    val code = """{#${warning.wrap("my_validator")}:param 1;param 2#}"""
+    val code =
+      """{#${warning.wrap("my_validator")}:param 1;param 2#}"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -190,7 +227,10 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
   }
 }

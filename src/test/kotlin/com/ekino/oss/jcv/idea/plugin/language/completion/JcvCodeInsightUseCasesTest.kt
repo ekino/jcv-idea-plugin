@@ -14,7 +14,8 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
   fun `test empty validator completion`() {
 
     // Given
-    val code = """{#<caret>"""
+    val code =
+      """{#<caret>"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -31,7 +32,8 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
   fun `test validator completion for id`() {
 
     // Given
-    val code = """{#id<caret>"""
+    val code =
+      """{#id<caret>"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -48,7 +50,8 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
   fun `test validator completion for url`() {
 
     // Given
-    val code = """{#url<caret>"""
+    val code =
+      """{#url<caret>"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -65,7 +68,8 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
   fun `test parameter completion unknown param`() {
 
     // Given
-    val code = """{#custom_validator:<caret>"""
+    val code =
+      """{#custom_validator:<caret>"""
 
     myFixture.configureByText(JcvFileType, code)
 

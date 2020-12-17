@@ -57,7 +57,8 @@ class JcvCodeInsightWithJcvCoreTest : JcvCodeInsightUseCasesTest() {
   fun `test date time format pattern completion param with possible values`() {
 
     // Given
-    val code = """{#date_time_format:<caret>"""
+    val code =
+      """{#date_time_format:<caret>"""
 
     myFixture.configureByText(JcvFileType, code)
 
@@ -90,7 +91,8 @@ class JcvCodeInsightWithJcvCoreTest : JcvCodeInsightUseCasesTest() {
 
     // Given
     @Language("Jcv")
-    val code = """{#date_time_format:iso_instant;<caret>"""
+    val code =
+      """{#date_time_format:iso_instant;<caret>"""
 
     myFixture.configureByText(JcvFileType, code)
 

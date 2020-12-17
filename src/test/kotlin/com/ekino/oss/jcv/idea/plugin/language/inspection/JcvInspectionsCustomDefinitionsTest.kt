@@ -33,17 +33,19 @@ class JcvInspectionsCustomDefinitionsTest : JcvBasePlatformTestCase() {
   fun `test nothing to report on custom validator with definition`() {
 
     // Given
-    val code = """{#my_validator:param 1;param 2#}"""
+    val code =
+      """{#my_validator:param 1;param 2#}"""
     myFixture.configureByText(JcvFileType, code)
 
     // When
-    myFixture.enableInspections(
-      JcvUnknownValidatorInspection()
-    )
+    myFixture.enableInspections(JcvUnknownValidatorInspection())
 
     // Then
     myFixture.checkHighlighting(
-      true, true, true, false
+      true,
+      true,
+      true,
+      false
     )
     assertThat(JcvDefinitionsCache.getAllValidators().map { it.id })
       .containsExactly("my_validator")

@@ -11,7 +11,12 @@ data class HighlightingMessage(
     fun warning(description: String) = HighlightingMessage("warning", description)
   }
 
-  private fun tagStart() = """<$level descr="$description">"""
-  private fun tagEnd() = """</$level>"""
-  fun wrap(wrappedText: String) = """${tagStart()}$wrappedText${tagEnd()}"""
+  private fun tagStart() =
+    """<$level descr="$description">"""
+
+  private fun tagEnd() =
+    """</$level>"""
+
+  fun wrap(wrappedText: String) =
+    """${tagStart()}$wrappedText${tagEnd()}"""
 }

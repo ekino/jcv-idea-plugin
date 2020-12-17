@@ -20,12 +20,15 @@ class PostActivityStartupListener : StartupActivity.DumbAware {
 
     JcvDefinitionsCache.refreshCache(project)
 
-    project.messageBus.connect().subscribe(VirtualFileManager.VFS_CHANGES, object : BulkFileListener {
-      override fun after(events: MutableList<out VFileEvent>) {
-        events
-          .find { it.file?.name == ValidatorDescriptionsResolver.definitionsFileName() }
-          ?.also { JcvDefinitionsCache.refreshCache(project) }
+    project.messageBus.connect().subscribe(
+      VirtualFileManager.VFS_CHANGES,
+      object : BulkFileListener {
+        override fun after(events: MutableList<out VFileEvent>) {
+          events
+            .find { it.file?.name == ValidatorDescriptionsResolver.definitionsFileName() }
+            ?.also { JcvDefinitionsCache.refreshCache(project) }
+        }
       }
-    })
+    )
   }
 }
