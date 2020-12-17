@@ -40,6 +40,7 @@ repositories {
   mavenCentral()
   jcenter()
 }
+
 dependencies {
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${property("detekt-formatting.version")}")
 
@@ -68,6 +69,19 @@ intellij {
 }
 
 sourceSets["main"].java.srcDirs("src/main/gen")
+
+// Configure detekt plugin.
+// Read more: https://detekt.github.io/detekt/kotlindsl.html
+detekt {
+  config = files("./detekt-config.yml")
+  buildUponDefaultConfig = true
+
+  reports {
+    html.enabled = false
+    xml.enabled = false
+    txt.enabled = false
+  }
+}
 
 tasks {
   withType<KotlinCompile> {
