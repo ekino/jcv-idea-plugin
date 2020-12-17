@@ -7,7 +7,13 @@ import com.intellij.openapi.module.ModuleUtil
 import com.intellij.openapi.roots.libraries.Library
 import com.intellij.psi.PsiElement
 
-fun PsiElement.findModule() = ModuleUtil.findModuleForPsiElement(this)
+fun PsiElement.findModule(): Module? {
+  ModuleUtil.findModuleForPsiElement(this)?.also { return it }
+
+  // search by original file for fragment edition
+  // https://youtrack.jetbrains.com/issue/IJSDK-975
+  return this.containingFile?.originalFile?.let { ModuleUtil.findModuleForPsiElement(it) }
+}
 
 fun JcvValidatorDefinition.existsInModule(module: Module): Boolean = when (origin) {
   is LibraryOrigin -> (origin as LibraryOrigin).findLibrary(module) != null
@@ -19,4 +25,3 @@ fun LibraryOrigin.findLibrary(module: Module): Library? = dependencyPattern()
   ?.let { dependencyPattern ->
     JcvLibraryCache.getLibraries(module).find { it.name?.contains(dependencyPattern) ?: false }
   }
-
