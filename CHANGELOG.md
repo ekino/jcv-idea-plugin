@@ -1,6 +1,18 @@
 # JCV Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [3.0.0]
 ### Changed
 - Re-implemented as a true injectable language
 
@@ -27,7 +39,8 @@
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/ekino/jcv-idea-plugin/compare/2.0.1...HEAD
+[Unreleased]: https://github.com/ekino/jcv-idea-plugin/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/ekino/jcv-idea-plugin/compare/2.0.1...v3.0.0
 [2.0.1]: https://github.com/ekino/jcv-idea-plugin/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/ekino/jcv-idea-plugin/compare/1.0.0...1.0.0
 [1.0.0]: https://github.com/ekino/jcv-idea-plugin/compare/a70d7c59e66af964b488b484250e9ade19bfdc31...1.0.0
