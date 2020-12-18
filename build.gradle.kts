@@ -117,7 +117,7 @@ tasks {
         val gitHubContentBasePath = "https://raw.githubusercontent.com/ekino/jcv-idea-plugin"
         val gitHubRef = when {
           pluginVersion.endsWith("-SNAPSHOT") -> "master"
-          else -> pluginVersion
+          else -> "v$pluginVersion"
         }
 
         File("./README.md").readText().lines().run {
