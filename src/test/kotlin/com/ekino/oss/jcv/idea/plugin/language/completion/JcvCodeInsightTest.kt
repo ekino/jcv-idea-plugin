@@ -90,7 +90,7 @@ class JcvCodeInsightWithJcvCoreTest : JcvCodeInsightUseCasesTest() {
   fun `test date time format language completion param with possible values`() {
 
     // Given
-    @Language("Jcv")
+    @Language("JCV")
     val code =
       """{#date_time_format:iso_instant;<caret>"""
 

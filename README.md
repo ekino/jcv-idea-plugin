@@ -11,11 +11,11 @@ This plugin brings the JCV language support injected in JSON language.
 
 ## Auto-completion and documentation
 
-Any identified validator will get a quick documentation and even external links to official documentation for official Jcv validators:
+Any identified validator will get a quick documentation and even external links to official documentation for official JCV validators:
 
 ![Validator documentation screenshot](./screenshots/jcv-demo-validator_documentation.png)
 
-As you start typing in the Jcv template pattern, a list of available validators will be suggested to you:
+As you start typing in the JCV template pattern, a list of available validators will be suggested to you:
 
 ![Completion list screenshot](./screenshots/jcv-demo-validator_completion_list.png)
 
@@ -92,7 +92,7 @@ Here are the available inspections that you can customize:
 
 ### Intentions
 
-You can find the Jcv replacement suggestions on JSON values in the intentions:
+You can find the JCV replacement suggestions on JSON values in the intentions:
 
 ![Intentions screenshot](./screenshots/jcv-demo-intentions.png)
 <!-- Plugin description end -->

@@ -28,5 +28,5 @@ class JcvColorSettingsPage : ColorSettingsPage {
 
   override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
 
-  override fun getDisplayName(): String = "Jcv"
+  override fun getDisplayName(): String = "JCV"
 }

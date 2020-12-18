@@ -37,7 +37,7 @@ class JcvDefinitionLineMarkerProvider : RelatedItemLineMarkerProvider() {
       ?: return
     NavigationGutterIconBuilder.create(JcvIcons.FILE)
       .setTarget(jcvDefinitionElement.value)
-      .setTooltipText("Navigate to Jcv validator definition")
+      .setTooltipText("Navigate to JCV validator definition")
       .createLineMarkerInfo(element.validatorIdElement!!)
       .also { result.add(it) }
   }

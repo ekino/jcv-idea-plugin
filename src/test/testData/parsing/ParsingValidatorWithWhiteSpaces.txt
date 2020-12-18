@@ -1,4 +1,4 @@
-Jcv File(0,47)
+JCV File(0,47)
   JcvValidatorImpl(Validator)(0,47)
     PsiElement(Validator start marker)('{#')(0,2)
     PsiWhiteSpace('    ')(2,6)

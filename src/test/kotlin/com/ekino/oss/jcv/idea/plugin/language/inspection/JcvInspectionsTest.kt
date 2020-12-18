@@ -184,7 +184,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     )
   }
 
-  fun `test missing library on jcv validator`() {
+  fun `test missing library on JCV validator`() {
 
     // Given
     val warning = HighlightingMessage.warning("""Missing validator library \"com.ekino.oss.jcv:jcv-core\"""")

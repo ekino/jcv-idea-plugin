@@ -71,7 +71,7 @@ class SuggestJcvReplacementAction : AnAction() {
     val singleJsonPropertyElt = jsonValueElements.singleOrNull()?.parentOfType<JsonProperty>()
     val title = when {
       singleJsonPropertyElt != null -> "\"${singleJsonPropertyElt.name}\" field's value replacement suggestions"
-      else -> "Jcv Replacement Suggestions"
+      else -> "JCV Replacement Suggestions"
     }
     JBPopupFactory.getInstance().createActionGroupPopup(
       title,

@@ -10,5 +10,5 @@ class JcvFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, JcvLan
 
   override fun getFileType(): FileType = JcvFileType
 
-  override fun toString(): String = "Jcv File"
+  override fun toString(): String = "JCV File"
 }

@@ -13,36 +13,36 @@ import com.intellij.json.JsonFileType
  */
 class JcvIntentionsTest : JcvBasePlatformTestCase() {
 
-  fun `test should suggest jcv replacement on raw json value`() {
+  fun `test should suggest JCV replacement on raw json value`() {
 
     // Given
     val codes = mapOf(
-      "should suggest jcv replacement on raw json string value" to """
+      "should suggest JCV replacement on raw json string value" to """
       {
         "field": "Some<caret> value"
       }
       """.trimIndent(),
-      "should suggest jcv replacement on raw json number value" to """
+      "should suggest JCV replacement on raw json number value" to """
       {
         "field": 2.<caret>3
       }
       """.trimIndent(),
-      "should suggest jcv replacement on raw json boolean value" to """
+      "should suggest JCV replacement on raw json boolean value" to """
       {
         "field": tru<caret>e
       }
       """.trimIndent(),
-      "should suggest jcv replacement on raw json object value" to """
+      "should suggest JCV replacement on raw json object value" to """
       {
         "field": {<caret>}
       }
       """.trimIndent(),
-      "should suggest jcv replacement on raw json array value" to """
+      "should suggest JCV replacement on raw json array value" to """
       {
         "field": [<caret>]
       }
       """.trimIndent(),
-      "should suggest jcv replacement on raw json value inside array" to """
+      "should suggest JCV replacement on raw json value inside array" to """
       {
         "field": ["Some <caret>value"]
       }
@@ -60,16 +60,16 @@ class JcvIntentionsTest : JcvBasePlatformTestCase() {
     }
   }
 
-  fun `test should not suggest jcv replacement on non raw json value`() {
+  fun `test should not suggest JCV replacement on non raw json value`() {
 
     // Given
     val codes = mapOf(
-      "should not suggest jcv replacement on existing jcv validator" to """
+      "should not suggest JCV replacement on existing JCV validator" to """
       {
         "field": "{#contains:Some<caret> value#}"
       }
       """.trimIndent(),
-      "should not suggest jcv replacement on json property key" to """
+      "should not suggest JCV replacement on json property key" to """
       {
         "fie<caret>ld": "Some value"
       }
@@ -89,7 +89,7 @@ class JcvIntentionsTest : JcvBasePlatformTestCase() {
 
   private fun findIntention(
     code: String,
-    intentionKey: String = "Replace with Jcv validator"
+    intentionKey: String = "Replace with JCV validator"
   ): IntentionAction? {
     val psiFile = myFixture.configureByText(JsonFileType.INSTANCE, code)
     myFixture.testHighlighting(true, false, true, psiFile.virtualFile)
