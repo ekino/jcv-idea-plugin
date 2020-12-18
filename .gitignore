@@ -83,6 +83,9 @@ modules.xml
 .idea/misc.xml
 *.ipr
 
+# Idea JFlex
+idea-flex.skeleton
+
 ### Java ###
 # Compiled class file
 *.class

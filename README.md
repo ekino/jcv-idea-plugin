@@ -6,50 +6,93 @@ IntelliJ IDEA plugin for an enhanced coding experience on JCV based projects.
 [![Jetbrains plugin](https://img.shields.io/jetbrains/plugin/v/13916-jcv.svg)](https://plugins.jetbrains.com/plugin/13916-jcv)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/13916-jcv.svg)](https://plugins.jetbrains.com/plugin/13916-jcv)
 
-## Table of contents
+<!-- Plugin description -->
+This plugin brings the JCV language support injected in JSON language.
 
-* [Syntax Highlighting](#syntax-highlighting)
-* [Validator auto-completion](#validator-auto-completion)
-* [Replacement suggestions](#replacement-suggestions)
+## Auto-completion and documentation
 
-## Syntax Highlighting
+Any identified validator will get a quick documentation and even external links to official documentation for official JCV validators:
 
-It provides template colors and information about known JCV validators:
+![Validator documentation screenshot](./screenshots/jcv-demo-validator_documentation.png)
 
-![](./screenshots/jcv-syntax_highlighting.png)
+As you start typing in the JCV template pattern, a list of available validators will be suggested to you:
 
-It will also detect invalid usages and give quick-fixes when possible:
+![Completion list screenshot](./screenshots/jcv-demo-validator_completion_list.png)
 
-![](./screenshots/jcv-validation-unexpected_whitespaces.png)
+You will also get parameter values completion if available, for example with the [date_time_format](https://ekino.github.io/jcv/documentation/validators.html#date_time_format) from [JCV](https://github.com/ekino/jcv):
 
-![](./screenshots/jcv-validation-unexpected_param.png)
+![Auto completion screencast](./screenshots/jcv-demo-auto_completion.gif)
 
-![](./screenshots/jcv-validation-empty_param.png)
+## Supported validators
 
-## Validator auto-completion
+### Official ones
 
-It provides autocompletion for jcv validators in json files.
-
-Just start typing "{#" or any jcv validator id and press ctrl+space to see all the suggested validators:
-
-![](./screenshots/jcv-autocomplete_all.png)
-
-It also works for templated validators with suggested values:
-
-![](./screenshots/jcv-autocomplete_param.png)
-
-### Validators covered
 [JCV](https://github.com/ekino/jcv) is a library allowing you to compare JSON contents with embedded validation.
 It comes with plenty of pre-defined validators (listed [here](https://github.com/ekino/jcv/wiki/Predefined-validators))
 designed to cover the most common needs when validating data with non-predictable values.
 
-[JCV-DB](https://github.com/ekino/jcv-db) reuses these validators and also defines a list of its own 
+[JCV-DB](https://github.com/ekino/jcv-db) reuses these validators and also defines a list of its own
 (listed [here](https://github.com/ekino/jcv-db/wiki/Validators)) that are specific to a database-oriented usage.
 
-This plugin offers autocompletion on all the validators of these two projects to date.
+This plugin offers autocompletion on all the validators of these two projects to date if detected in your project external libraries.
 
-## Replacement suggestions
+Using an official validator without the actual library linked to the current project module will give you a warning and can guide you to the Maven Central library page to get it:
 
-It will suggest smart replacements of json value to matching validators:
+![Missing library screencast](./screenshots/jcv-demo-missing_library.gif)
 
-![](./screenshots/jcv-suggestion-date_time_format.png)
+### Your custom ones
+
+You can define your own custom validator definitions by adding a `.jcvdefinitions.json` file in the project root directory or just let the plugin do it for you:
+
+![Custom validator definition screencast](./screenshots/jcv-demo-custom_validator_definition.gif)
+
+Here is an example definition you can customize:
+
+`ROOT_PROJECT_DIRECTORY/.jcvdefinitions.json`
+```json
+{
+  "validators" : [ {
+    "id" : "my_custom_validator",
+    "parameters" : [ {
+      "description" : "My first param",
+      "required" : true,
+      "suggested_values" : [ "Value 1", "Value 2" ]
+    }, {
+      "description" : "Another parameter",
+      "required" : false,
+      "suggested_values" : [ "Another value to suggest" ]
+    } ]
+  } ]
+}
+```
+
+## Replacements suggestions
+
+The plugin can find raw JSON value that can be replaced by official matching validators.
+
+![Replacement suggestions screenshot](./screenshots/jcv-demo-replacements_suggestions.png)
+
+Note that it also supports multi-caret replacement with matching validators for all JSON values find at each caret.
+
+![Replacement suggestions screencast](./screenshots/jcv-demo-replacements_suggestions.gif)
+
+## Settings
+
+### Color scheme
+
+You can configure the color scheme settings:
+
+![Color scheme settings screenshot](./screenshots/jcv-demo-color_settings.png)
+
+### Inspections
+
+Here are the available inspections that you can customize:
+
+![Inspections screenshot](./screenshots/jcv-demo-inspections.png)
+
+### Intentions
+
+You can find the JCV replacement suggestions on JSON values in the intentions:
+
+![Intentions screenshot](./screenshots/jcv-demo-intentions.png)
+<!-- Plugin description end -->

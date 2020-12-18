@@ -6,19 +6,110 @@
 
     <description><![CDATA[ Description will be added by gradle build]]></description>
 
+    <change-notes><![CDATA[	Change notes will be filled by gradle build ]]></change-notes>
+
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="201.6668"/>
+    <idea-version since-build="201.6668.113"/>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <annotator language="JSON"
-                   implementationClass="com.ekino.oss.jcv.idea_plugin.annotator.JcvValidatorAnnotator"
-        />
-        <completion.contributor language="JSON"
-                                implementationClass="com.ekino.oss.jcv.idea_plugin.autocomplete.JcvValidatorContributor"/>
+        <completion.contributor language="JCV"
+                                implementationClass="com.ekino.oss.jcv.idea.plugin.language.completion.JcvCompletionContributor"/>
+
+        <fileType name="JCV" implementationClass="com.ekino.oss.jcv.idea.plugin.language.JcvFileType"
+                  language="JCV" extensions="jcv"/>
+        <lang.parserDefinition language="JCV"
+                               implementationClass="com.ekino.oss.jcv.idea.plugin.language.JcvParserDefinition"/>
+
+        <lang.syntaxHighlighterFactory language="JCV"
+                                       implementationClass="com.ekino.oss.jcv.idea.plugin.language.syntax.JcvSyntaxHighlighterFactory"/>
+
+        <languageInjector implementation="com.ekino.oss.jcv.idea.plugin.language.psi.JcvLanguageInjector"/>
+        <colorSettingsPage implementation="com.ekino.oss.jcv.idea.plugin.language.syntax.JcvColorSettingsPage"/>
+        <localInspection
+                bundle="messages.JcvBundle"
+                key="jcv.inspections.helpers.parameter.empty"
+                groupBundle="messages.JcvBundle"
+                groupKey="inspections.group.name"
+                language="JCV"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvEmptyParameterInspection"/>
+        <localInspection
+                bundle="messages.JcvBundle"
+                key="jcv.inspections.helpers.white-spaces"
+                groupBundle="messages.JcvBundle"
+                groupKey="inspections.group.name"
+                language="JCV"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvWhiteSpacesInspection"/>
+        <localInspection
+                bundle="messages.JcvBundle"
+                key="jcv.inspections.helpers.parameter.unexpected"
+                groupBundle="messages.JcvBundle"
+                groupKey="inspections.group.name"
+                language="JCV"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvUnexpectedParameterInspection"/>
+        <localInspection
+                bundle="messages.JcvBundle"
+                key="jcv.inspections.helpers.parameter.required"
+                groupBundle="messages.JcvBundle"
+                groupKey="inspections.group.name"
+                language="JCV"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvRequiredParameterInspection"/>
+        <localInspection
+                bundle="messages.JcvBundle"
+                key="jcv.inspections.helpers.origin.library.missing"
+                groupBundle="messages.JcvBundle"
+                groupKey="inspections.group.name"
+                language="JCV"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvMissingLibraryInspection"/>
+        <localInspection
+                bundle="messages.JcvBundle"
+                key="jcv.inspections.helpers.validator.unknown"
+                groupBundle="messages.JcvBundle"
+                groupKey="inspections.group.name"
+                language="JCV"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvUnknownValidatorInspection"/>
+
+        <intentionAction>
+            <className>com.ekino.oss.jcv.idea.plugin.language.intention.JcvReplacementIntention</className>
+            <category>JCV intentions</category>
+        </intentionAction>
+
+        <lang.psiStructureViewFactory
+                language="JCV"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.structure.JcvStructureViewFactory"/>
+
+        <lang.documentationProvider
+                language="JCV"
+                implementationClass="com.ekino.oss.jcv.idea.plugin.language.documentation.JcvValidatorDocumentationProvider"
+                order="first"/>
+
+        <postStartupActivity implementation="com.ekino.oss.jcv.idea.plugin.listener.PostActivityStartupListener"/>
+
+        <codeInsight.lineMarkerProvider language="JCV"
+                                        implementationClass="com.ekino.oss.jcv.idea.plugin.definition.custom.JcvDefinitionLineMarkerProvider"/>
     </extensions>
 
-    <change-notes><![CDATA[	Change notes will be filled by gradle build ]]></change-notes>
+    <actions>
+        <action id="com.ekino.oss.jcv.idea.plugin.language.intention.SuggestJcvReplacementAction"
+                class="com.ekino.oss.jcv.idea.plugin.language.intention.SuggestJcvReplacementAction"
+                text="Suggest JCV Replacements"/>
+    </actions>
 
+    <projectListeners>
+        <listener class="com.ekino.oss.jcv.idea.plugin.listener.ProjectChangesListener"
+                  topic="com.intellij.openapi.roots.ModuleRootListener"/>
+    </projectListeners>
 </idea-plugin>
