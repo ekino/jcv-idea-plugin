@@ -120,7 +120,7 @@ tasks {
           else -> "v$pluginVersion"
         }
 
-        File("./README.md").readText().lines().run {
+        File(projectDir, "README.md").readText().lines().run {
           val start = "<!-- Plugin description -->"
           val end = "<!-- Plugin description end -->"
 
