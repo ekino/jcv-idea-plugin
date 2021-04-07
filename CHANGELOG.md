@@ -1,17 +1,9 @@
 # JCV Changelog
 
 ## [Unreleased]
-### Added
-
-### Changed
-
-### Deprecated
-
-### Removed
-
 ### Fixed
+- Remove "untilBuild" IntelliJ version from plugin description to extends compatibility with recent versions 
 
-### Security
 ## [3.0.0]
 ### Changed
 - Re-implemented as a true injectable language
