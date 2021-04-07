@@ -1,6 +1,18 @@
 # JCV Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [3.0.1]
 ### Fixed
 - Remove "untilBuild" IntelliJ version from plugin description to extends compatibility with recent versions 
 
