@@ -24,6 +24,8 @@ class JcvReplacementIntention : JcvBaseIntentionAction() {
       ?.takeUnless { JcvUtil.isJcvValidatorCandidate(it) }
       .let { it != null }
 
+  override fun startInWriteAction(): Boolean = false
+
   override fun invoke(project: Project, editor: Editor?, element: PsiElement) {
     SuggestJcvReplacementAction().also { action ->
       /**
@@ -32,7 +34,7 @@ class JcvReplacementIntention : JcvBaseIntentionAction() {
       val dataContext = DataManager.getInstance().getDataContext(editor?.contentComponent)
       action.actionPerformed(
         AnActionEvent.createFromDataContext(
-          ActionPlaces.UNKNOWN,
+          ActionPlaces.ACTION_PLACE_QUICK_LIST_POPUP_ACTION,
           action.templatePresentation,
           dataContext
         )

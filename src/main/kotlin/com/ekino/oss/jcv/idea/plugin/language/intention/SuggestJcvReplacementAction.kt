@@ -7,13 +7,7 @@ import com.intellij.json.JsonLanguage
 import com.intellij.json.psi.JsonElementGenerator
 import com.intellij.json.psi.JsonProperty
 import com.intellij.json.psi.JsonValue
-import com.intellij.openapi.actionSystem.ActionGroup
-import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.ActionPlaces
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.actionSystem.Separator
+import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.ui.popup.JBPopupFactory
@@ -51,7 +45,7 @@ class SuggestJcvReplacementAction : AnAction() {
       }
 
     val actionGroupMenu = ActionManager.getInstance().createActionPopupMenu(
-      ActionPlaces.UNKNOWN,
+      ActionPlaces.ACTION_PLACE_QUICK_LIST_POPUP_ACTION,
       object : ActionGroup() {
         override fun isPopup(): Boolean = true
 
