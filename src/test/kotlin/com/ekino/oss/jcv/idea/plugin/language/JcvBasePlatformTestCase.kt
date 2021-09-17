@@ -7,6 +7,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.testFramework.LightProjectDescriptor
 import com.intellij.testFramework.PsiTestUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import java.nio.file.Path
 
 const val LAST_JCV_CORE_VERSION = "1.5.0"
 
@@ -20,8 +21,8 @@ abstract class JcvBasePlatformTestCase : BasePlatformTestCase() {
       super.setUpProject(project, handler)
     }
 
-    override fun createModule(project: Project, moduleFilePath: String): Module {
-      return super.createModule(project, moduleFilePath)
+    override fun createModule(project: Project, moduleFile: Path): Module {
+      return super.createModule(project, moduleFile)
         .also { configureModule(it) }
     }
   }

@@ -4,15 +4,13 @@ import com.ekino.oss.jcv.idea.plugin.language.JcvIcons
 import com.ekino.oss.jcv.idea.plugin.language.psi.JcvElementFactory
 import com.ekino.oss.jcv.idea.plugin.language.psi.JcvParameterEntry
 import com.ekino.oss.jcv.idea.plugin.language.psi.JcvParameters
-import com.ekino.oss.jcv.idea.plugin.language.psi.JcvTypes.PARAMETER
-import com.ekino.oss.jcv.idea.plugin.language.psi.JcvTypes.PARAMETER_SEPARATOR
-import com.ekino.oss.jcv.idea.plugin.language.psi.JcvTypes.VALIDATOR_ID
+import com.ekino.oss.jcv.idea.plugin.language.psi.JcvTypes.*
 import com.ekino.oss.jcv.idea.plugin.language.psi.JcvValidator
 import com.intellij.navigation.ItemPresentation
 import com.intellij.psi.PsiElement
-import com.intellij.psi.util.collectDescendantsOfType
+import com.intellij.psi.util.descendants
+import com.intellij.psi.util.descendantsOfType
 import com.intellij.psi.util.elementType
-import com.intellij.psi.util.findDescendantOfType
 import com.intellij.psi.util.parentOfType
 import javax.swing.Icon
 
@@ -65,11 +63,11 @@ object JcvPsiImplUtil {
 
   @JvmStatic
   fun getParameterValue(element: JcvParameterEntry) =
-    element.findDescendantOfType<PsiElement> { it.elementType == PARAMETER }
+    element.descendantsOfType<PsiElement>().filter { it.elementType == PARAMETER }.firstOrNull()
 
   @JvmStatic
   fun getIndexedParameters(element: JcvParameters): List<Pair<Int, JcvParameterEntry?>> {
-    val paramEntries = element.collectDescendantsOfType<JcvParameterEntry>()
+    val paramEntries = element.descendantsOfType<JcvParameterEntry>()
 
     // Manage the following use case : "{#validator:;param2#}" -> param 2 should be index 1
     val firstParamDelta = paramEntries.firstOrNull()?.separator?.let { listOf(null) } ?: emptyList()
@@ -87,10 +85,8 @@ object JcvPsiImplUtil {
 
   @JvmStatic
   fun getSeparator(element: JcvParameterEntry) =
-    element.findDescendantOfType<PsiElement> {
-      it.elementType == PARAMETER_SEPARATOR
-    }
+    element.descendantsOfType<PsiElement>().filter { it.elementType == PARAMETER_SEPARATOR }.firstOrNull()
 
   private fun PsiElement.findValidatorIdElement() =
-    findDescendantOfType<PsiElement> { it.elementType == VALIDATOR_ID }
+    descendantsOfType<PsiElement>().filter { it.elementType == VALIDATOR_ID }.firstOrNull()
 }

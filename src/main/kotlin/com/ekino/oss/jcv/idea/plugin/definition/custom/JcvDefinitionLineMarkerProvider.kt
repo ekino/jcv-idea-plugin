@@ -17,7 +17,7 @@ class JcvDefinitionLineMarkerProvider : RelatedItemLineMarkerProvider() {
   @Suppress("ReturnCount")
   override fun collectNavigationMarkers(
     element: PsiElement,
-    result: MutableCollection<in RelatedItemLineMarkerInfo<PsiElement>>
+    result: MutableCollection<in RelatedItemLineMarkerInfo<*>>
   ) {
     val validatorId = (element as? com.ekino.oss.jcv.idea.plugin.language.psi.JcvValidator)
       ?.validatorId

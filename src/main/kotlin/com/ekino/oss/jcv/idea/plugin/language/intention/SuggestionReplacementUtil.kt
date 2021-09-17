@@ -3,12 +3,7 @@ package com.ekino.oss.jcv.idea.plugin.language.intention
 import com.ekino.oss.jcv.idea.plugin.definition.JcvValidatorRegistry
 import com.ekino.oss.jcv.idea.plugin.definition.existsInModule
 import com.ekino.oss.jcv.idea.plugin.language.JcvBundle
-import com.intellij.json.psi.JsonArray
-import com.intellij.json.psi.JsonBooleanLiteral
-import com.intellij.json.psi.JsonNumberLiteral
-import com.intellij.json.psi.JsonObject
-import com.intellij.json.psi.JsonStringLiteral
-import com.intellij.json.psi.JsonValue
+import com.intellij.json.psi.*
 import com.intellij.openapi.module.Module
 import com.intellij.psi.PsiElement
 import org.apache.commons.text.StringEscapeUtils
@@ -41,7 +36,6 @@ private val DATE_FORMATTERS by lazy {
   )
 }
 
-@OptIn(ExperimentalStdlibApi::class)
 fun findReplacementSuggestions(module: Module?, jsonValueElements: List<JsonValue>) = jsonValueElements
   .map { it to suggestReplacements(it) }
   .let { suggestionsByJsonValueElt ->
