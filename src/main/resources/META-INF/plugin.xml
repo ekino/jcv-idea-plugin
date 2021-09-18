@@ -9,7 +9,7 @@
     <change-notes><![CDATA[	Change notes will be filled by gradle build ]]></change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="201.6668.113"/>
+    <idea-version since-build="211"/>
 
     <depends>com.intellij.modules.platform</depends>
 
