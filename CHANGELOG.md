@@ -1,12 +1,14 @@
 # JCV Changelog
 
 ## [Unreleased]
+
+## [3.0.2]
 ### Fixed
 - Replacement suggestions popup appears now on IntelliJ Platform 2021.2
 
 ## [3.0.1]
 ### Fixed
-- Remove "untilBuild" IntelliJ version from plugin description to extends compatibility with recent versions 
+- Remove "untilBuild" IntelliJ version from plugin description to extends compatibility with recent versions
 
 ## [3.0.0]
 ### Changed
