@@ -139,3 +139,6 @@ gradle-app.setting
 .java-version
 
 .DS_Store
+
+.intellijPlatform
+.qodana
