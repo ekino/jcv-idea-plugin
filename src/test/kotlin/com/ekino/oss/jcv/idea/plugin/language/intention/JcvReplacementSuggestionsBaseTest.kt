@@ -14,7 +14,7 @@ abstract class JcvReplacementSuggestionsBaseTest : JcvBasePlatformTestCase() {
   protected fun suggestion(
     category: SuggestionCategory,
     id: String,
-    parameters: List<String> = emptyList()
+    parameters: List<String> = emptyList(),
   ) = JcvValidatorSuggestion(
     category = category,
     validatorId = id,
@@ -139,7 +139,8 @@ abstract class JcvReplacementSuggestionsUseCasesTest : JcvReplacementSuggestions
         listOf(
           "iso_offset_date_time",
           "iso_zoned_date_time",
-          "iso_date_time"
+          "iso_date_time",
+          "iso_instant" // fail in Java 11 but now works in Java 21 (have not tried between)
         ),
       "2011-12-03T10:15:30+01:00[Europe/Paris]" to
         listOf(
@@ -184,7 +185,7 @@ abstract class JcvReplacementSuggestionsUseCasesTest : JcvReplacementSuggestions
 
   open fun getSuggestionsForDate(
     textValue: String,
-    expectedFormats: List<String>
+    expectedFormats: List<String>,
   ): List<JcvValidatorSuggestion> = emptyList()
 
   fun `test should suggest replacements for number`() {
