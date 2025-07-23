@@ -7,7 +7,14 @@ import com.intellij.json.JsonLanguage
 import com.intellij.json.psi.JsonElementGenerator
 import com.intellij.json.psi.JsonProperty
 import com.intellij.json.psi.JsonValue
-import com.intellij.openapi.actionSystem.*
+import com.intellij.openapi.actionSystem.ActionGroup
+import com.intellij.openapi.actionSystem.ActionManager
+import com.intellij.openapi.actionSystem.ActionPlaces
+import com.intellij.openapi.actionSystem.ActionUpdateThread
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.actionSystem.Separator
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.ui.popup.JBPopupFactory
@@ -22,6 +29,9 @@ class SuggestJcvReplacementAction : AnAction() {
       icon = JcvIcons.FILE
     }
   }
+
+  override fun getActionUpdateThread(): ActionUpdateThread =
+    ActionUpdateThread.EDT
 
   override fun actionPerformed(e: AnActionEvent) {
 
@@ -53,6 +63,9 @@ class SuggestJcvReplacementAction : AnAction() {
             icon = AllIcons.Actions.SuggestedRefactoringBulb
           }
         }
+
+        override fun getActionUpdateThread(): ActionUpdateThread =
+          ActionUpdateThread.EDT
 
         override fun getChildren(e: AnActionEvent?): Array<AnAction> = actions.toTypedArray()
       }
@@ -107,6 +120,9 @@ private fun JcvValidatorSuggestion.toReplacementsAction(elementsToReplace: List<
   val replacement = this.asText()
 
   return object : AnAction() {
+
+    override fun getActionUpdateThread(): ActionUpdateThread =
+      ActionUpdateThread.EDT
 
     override fun update(e: AnActionEvent) {
       super.update(e)
