@@ -35,7 +35,7 @@ class JcvReplacementIntention : JcvBaseIntentionAction() {
       action.actionPerformed(
         AnActionEvent.createFromDataContext(
           ActionPlaces.ACTION_PLACE_QUICK_LIST_POPUP_ACTION,
-          action.templatePresentation,
+          null,
           dataContext
         )
       )
