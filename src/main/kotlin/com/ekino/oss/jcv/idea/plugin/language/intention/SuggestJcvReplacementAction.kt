@@ -47,8 +47,6 @@ class SuggestJcvReplacementAction : AnAction() {
     val actionGroupMenu = ActionManager.getInstance().createActionPopupMenu(
       ActionPlaces.ACTION_PLACE_QUICK_LIST_POPUP_ACTION,
       object : ActionGroup() {
-        override fun isPopup(): Boolean = true
-
         override fun update(e: AnActionEvent) {
           super.update(e)
           e.presentation.apply {
@@ -58,6 +56,9 @@ class SuggestJcvReplacementAction : AnAction() {
 
         override fun getChildren(e: AnActionEvent?): Array<AnAction> = actions.toTypedArray()
       }
+        .also {
+          it.isPopup = true
+        }
     )
 
     val dataContext = e.dataContext
