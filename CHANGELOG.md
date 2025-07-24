@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## 3.0.3 - 2025-07-24
+## [3.0.3] - 2025-07-24
 
 ### Changed
 
@@ -71,7 +71,8 @@
 
 - Initial release
 
-[Unreleased]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.2...HEAD
+[Unreleased]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.3...HEAD
+[3.0.3]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/ekino/jcv-idea-plugin/compare/2.0.1...v3.0.0
