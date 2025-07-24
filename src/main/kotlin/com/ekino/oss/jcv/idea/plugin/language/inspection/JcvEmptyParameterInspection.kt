@@ -10,8 +10,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiElementVisitor
-import com.intellij.refactoring.suggested.endOffset
-import com.intellij.refactoring.suggested.startOffset
+import com.intellij.psi.util.endOffset
+import com.intellij.psi.util.startOffset
 
 class JcvEmptyParameterInspection : JcvInspectionBase() {
 
@@ -27,6 +27,7 @@ class JcvEmptyParameterInspection : JcvInspectionBase() {
               removeSeparatorQuickFix()
             )
           }
+
           element is JcvParameterEntry && element.parameterValue?.text.isNullOrEmpty() -> {
             holder.registerProblem(
               element,
@@ -34,6 +35,7 @@ class JcvEmptyParameterInspection : JcvInspectionBase() {
               removeSeparatorQuickFix()
             )
           }
+
           else -> return
         }
       }

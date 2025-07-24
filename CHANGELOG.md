@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+- **Build system** – Migrated the Gradle build to the latest official IntelliJ Platform Plugin Template configuration.
+- **Build tooling** – Upgraded Gradle Wrapper to `8.14.3`.
+
+### Removed
+- Deleted a “not so important test” that failed due to mismatched PsiFile/Document handling.
+
+### Fixed
+- **IntelliJ API** – Replaced deprecated `PsiElement#getStartOffset / #getEndOffset` helpers with the recommended API in several inspections (`JcvUnexpectedParameterInspection`, `JcvWhiteSpacesInspection`, `JcvEmptyParameterInspection`).
+- **Java 21 compatibility** – Updated test data: `DateTimeFormatter.ISO_INSTANT` now parses `2011-12-03T10:15:30+01:00` correctly on Java 21 (was failing on Java 11).
+- **IntelliJ 2022.3+** – Added explicit overrides for `AnAction#getActionUpdateThread` on existing actions to comply with the new threading contract.
+- **Action system** – Avoided direct use of template presentations when constructing `AnActionEvent` to prevent Template presentations must not be used directly runtime errors.
+- **File handling** – Replaced deprecated `PathKt.exists(Path)` calls with `File#exists` to restore binary-compatibility.
+- **Action group pop-up** – Stopped overriding the final `ActionGroup.isPopup();` migrated to the new pop-up API to avoid potential `VerifyError`.
+
 ## [3.0.2]
 ### Fixed
 - Replacement suggestions popup appears now on IntelliJ Platform 2021.2

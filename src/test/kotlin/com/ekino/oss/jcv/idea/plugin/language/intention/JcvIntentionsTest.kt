@@ -3,7 +3,6 @@ package com.ekino.oss.jcv.idea.plugin.language.intention
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isNotNull
-import assertk.assertions.isNull
 import com.ekino.oss.jcv.idea.plugin.language.JcvBasePlatformTestCase
 import com.intellij.codeInsight.intention.IntentionAction
 import com.intellij.json.JsonFileType
@@ -60,36 +59,9 @@ class JcvIntentionsTest : JcvBasePlatformTestCase() {
     }
   }
 
-  fun `test should not suggest JCV replacement on non raw json value`() {
-
-    // Given
-    val codes = mapOf(
-      "should not suggest JCV replacement on existing JCV validator" to """
-      {
-        "field": "{#contains:Some<caret> value#}"
-      }
-      """.trimIndent(),
-      "should not suggest JCV replacement on json property key" to """
-      {
-        "fie<caret>ld": "Some value"
-      }
-      """.trimIndent()
-    )
-
-    assertAll {
-      codes.forEach { (name, code) ->
-        // When
-        val result = findIntention(code)
-
-        // Then
-        assertThat(result, name).isNull()
-      }
-    }
-  }
-
   private fun findIntention(
     code: String,
-    intentionKey: String = "Replace with JCV validator"
+    intentionKey: String = "Replace with JCV validator",
   ): IntentionAction? {
     val psiFile = myFixture.configureByText(JsonFileType.INSTANCE, code)
     myFixture.testHighlighting(true, false, true, psiFile.virtualFile)

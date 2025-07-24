@@ -7,7 +7,6 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VfsUtil
 import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.util.io.exists
 import java.io.IOException
 import java.nio.file.Path
 
@@ -32,8 +31,9 @@ object ValidatorDescriptionsResolver {
 
   fun getOrCreateDefinitionsSource(project: Project) = definitionsFilePath(project)
     ?.also { filePath ->
-      if (!filePath.exists()) {
-        filePath.toFile().createNewFile()
+      val file = filePath.toFile()
+      if (!file.exists()) {
+        file.createNewFile()
       }
     }
     ?.let { getDefinitionsSource(project) }

@@ -6,6 +6,7 @@ import com.ekino.oss.jcv.idea.plugin.definition.findLibrary
 import com.ekino.oss.jcv.idea.plugin.definition.findModule
 import com.ekino.oss.jcv.idea.plugin.language.JcvBundle
 import com.ekino.oss.jcv.idea.plugin.language.psi.JcvValidator
+import com.intellij.codeInsight.intention.preview.IntentionPreviewInfo
 import com.intellij.codeInspection.LocalQuickFix
 import com.intellij.codeInspection.ProblemDescriptor
 import com.intellij.codeInspection.ProblemsHolder
@@ -49,6 +50,9 @@ class JcvMissingLibraryInspection : JcvInspectionBase() {
             override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
               BrowserUtil.browse("""https://search.maven.org/artifact/${dependencyPattern.replace(":", "/")}""")
             }
+
+            override fun generatePreview(project: Project, previewDescriptor: ProblemDescriptor): IntentionPreviewInfo =
+              IntentionPreviewInfo.EMPTY
           }
         )
       }
