@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- **IntelliJ Platform Plugin Template** – Upgraded IntelliJ Platform Plugin Template to [`v2.2.0`](https://github.com/JetBrains/intellij-platform-plugin-template/releases/tag/v2.2.0).<br>
+  ⚠️ `master` branch has to be renamed to `main` to follow the same GitHub actions rules and help futur upgrades.
+
 ## [3.0.3] - 2025-07-24
 
 ### Changed

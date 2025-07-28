@@ -140,5 +140,10 @@ gradle-app.setting
 
 .DS_Store
 
+# IntelliJ Platform Plugin Template
+.gradle
+.idea
 .intellijPlatform
+.kotlin
 .qodana
+build

@@ -38,6 +38,10 @@ dependencies {
   testImplementation(libs.junit.jupiter)
   testRuntimeOnly(libs.junit.vintage.engine)
 
+  // from IntelliJ Platform
+  testImplementation(libs.junit4)
+  testImplementation(libs.opentest4j)
+
   // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
   intellijPlatform {
     create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
@@ -103,7 +107,6 @@ intellijPlatform {
 
     ideaVersion {
       sinceBuild = providers.gradleProperty("pluginSinceBuild")
-      untilBuild = providers.gradleProperty("pluginUntilBuild")
     }
   }
 
