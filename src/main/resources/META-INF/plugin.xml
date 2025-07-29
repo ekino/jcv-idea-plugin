@@ -77,6 +77,7 @@
                 implementationClass="com.ekino.oss.jcv.idea.plugin.language.inspection.JcvUnknownValidatorInspection"/>
 
         <intentionAction>
+            <language>JSON</language>
             <className>com.ekino.oss.jcv.idea.plugin.language.intention.JcvReplacementIntention</className>
             <category>JCV intentions</category>
         </intentionAction>

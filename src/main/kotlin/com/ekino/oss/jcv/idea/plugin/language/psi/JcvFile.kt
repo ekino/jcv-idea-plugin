@@ -8,7 +8,7 @@ import com.intellij.psi.FileViewProvider
 
 class JcvFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, JcvLanguage) {
 
-  override fun getFileType(): FileType = JcvFileType
+  override fun getFileType(): FileType = JcvFileType()
 
   override fun toString(): String = "JCV File"
 }

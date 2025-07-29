@@ -17,7 +17,7 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
     val code =
       """{#<caret>"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.complete(CompletionType.BASIC, 1)
@@ -35,7 +35,7 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
     val code =
       """{#id<caret>"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.complete(CompletionType.BASIC, 1)
@@ -53,7 +53,7 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
     val code =
       """{#url<caret>"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.complete(CompletionType.BASIC, 1)
@@ -71,7 +71,7 @@ abstract class JcvCodeInsightUseCasesTest : JcvBasePlatformTestCase() {
     val code =
       """{#custom_validator:<caret>"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.complete(CompletionType.BASIC, 1)
