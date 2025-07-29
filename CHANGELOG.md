@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.0.4] - 2025-07-29
+
 ### Changed
 
 - **IntelliJ Platform Plugin Template** – Upgraded IntelliJ Platform Plugin Template to [`v2.2.0`](https://github.com/JetBrains/intellij-platform-plugin-template/releases/tag/v2.2.0).<br>
@@ -82,7 +84,8 @@
 
 - Initial release
 
-[Unreleased]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.3...HEAD
+[Unreleased]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.4...HEAD
+[3.0.4]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/ekino/jcv-idea-plugin/compare/v3.0.0...v3.0.1
