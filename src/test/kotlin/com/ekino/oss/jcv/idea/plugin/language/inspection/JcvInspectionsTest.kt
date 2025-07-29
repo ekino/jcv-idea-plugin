@@ -12,7 +12,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#my_validator#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvWhiteSpacesInspection())
@@ -34,7 +34,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#my_validator:param 1${warning.wrap(";")};param3${warning.wrap(";")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvEmptyParameterInspection())
@@ -56,7 +56,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#my_validator${warning.wrap(":")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvEmptyParameterInspection())
@@ -78,7 +78,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#contains:param1${error.wrap(";param 2")}${error.wrap(";param 3")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvUnexpectedParameterInspection())
@@ -100,7 +100,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#uuid${error.wrap(":")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvUnexpectedParameterInspection())
@@ -122,7 +122,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#${error.wrap("contains")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvRequiredParameterInspection())
@@ -144,7 +144,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#contains${error.wrap(":")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvRequiredParameterInspection())
@@ -164,7 +164,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#my_validator:param 1;param 2#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(
@@ -192,7 +192,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#${warning.wrap("uuid")}#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(
@@ -217,7 +217,7 @@ class JcvInspectionsTest : JcvBasePlatformTestCase() {
     val code =
       """{#${warning.wrap("my_validator")}:param 1;param 2#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(

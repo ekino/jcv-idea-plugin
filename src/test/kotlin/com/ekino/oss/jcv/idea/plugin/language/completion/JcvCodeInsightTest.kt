@@ -60,7 +60,7 @@ class JcvCodeInsightWithJcvCoreTest : JcvCodeInsightUseCasesTest() {
     val code =
       """{#date_time_format:<caret>"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.complete(CompletionType.BASIC, 1)
@@ -94,7 +94,7 @@ class JcvCodeInsightWithJcvCoreTest : JcvCodeInsightUseCasesTest() {
     val code =
       """{#date_time_format:iso_instant;<caret>"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.complete(CompletionType.BASIC, 1)

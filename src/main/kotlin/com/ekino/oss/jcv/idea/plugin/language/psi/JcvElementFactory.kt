@@ -13,5 +13,5 @@ object JcvElementFactory {
 
   @JvmStatic
   fun createFile(project: Project, text: String): JcvFile = PsiFileFactory.getInstance(project)
-    .createFileFromText("dummy.jcv", JcvFileType, text) as JcvFile
+    .createFileFromText("dummy.jcv", JcvFileType(), text) as JcvFile
 }

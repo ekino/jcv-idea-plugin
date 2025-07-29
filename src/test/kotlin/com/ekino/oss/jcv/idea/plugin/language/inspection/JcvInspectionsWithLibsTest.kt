@@ -16,7 +16,7 @@ class JcvInspectionsWithLibsTest : JcvBasePlatformTestCase() {
     val code =
       """{#date_time_format:iso_instant;fr-FR#}"""
 
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(

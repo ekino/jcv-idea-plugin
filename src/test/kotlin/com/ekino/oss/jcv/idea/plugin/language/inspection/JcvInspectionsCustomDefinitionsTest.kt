@@ -35,7 +35,7 @@ class JcvInspectionsCustomDefinitionsTest : JcvBasePlatformTestCase() {
     // Given
     val code =
       """{#my_validator:param 1;param 2#}"""
-    myFixture.configureByText(JcvFileType, code)
+    myFixture.configureByText(JcvFileType(), code)
 
     // When
     myFixture.enableInspections(JcvUnknownValidatorInspection())

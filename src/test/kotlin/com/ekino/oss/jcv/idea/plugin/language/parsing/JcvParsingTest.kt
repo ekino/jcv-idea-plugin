@@ -10,7 +10,7 @@ import com.intellij.testFramework.ParsingTestCase
  */
 class JcvParsingTest : ParsingTestCase(
   "",
-  JcvFileType.defaultExtension,
+  JcvFileType().defaultExtension,
   JcvParserDefinition()
 ) {
 
