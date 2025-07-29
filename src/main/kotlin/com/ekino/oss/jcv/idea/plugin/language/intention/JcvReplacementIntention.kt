@@ -5,8 +5,9 @@ import com.ekino.oss.jcv.idea.plugin.language.JcvUtil
 import com.intellij.ide.DataManager
 import com.intellij.json.psi.JsonPsiUtil
 import com.intellij.json.psi.JsonValue
-import com.intellij.openapi.actionSystem.ActionPlaces
+import com.intellij.openapi.actionSystem.ActionUiKind
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.ex.ActionUtil
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
@@ -27,18 +28,22 @@ class JcvReplacementIntention : JcvBaseIntentionAction() {
   override fun startInWriteAction(): Boolean = false
 
   override fun invoke(project: Project, editor: Editor?, element: PsiElement) {
-    SuggestJcvReplacementAction().also { action ->
-      /**
-       * @see <a href="https://stackoverflow.com/a/48673746">Get data context</a>
-       */
-      val dataContext = DataManager.getInstance().getDataContext(editor?.contentComponent)
-      action.actionPerformed(
-        AnActionEvent.createFromDataContext(
-          ActionPlaces.ACTION_PLACE_QUICK_LIST_POPUP_ACTION,
-          null,
-          dataContext
-        )
+    /**
+     * @see <a href="https://stackoverflow.com/a/48673746">Get data context</a>
+     */
+    val dataContext = DataManager.getInstance().getDataContext(editor?.contentComponent)
+    /*
+     * @see <a href="https://github.com/OpenLiberty/liberty-tools-intellij/issues/1189#issuecomment-255648446">Address override-only method usage violation in 'LibertyGeneralAction.actionPerformed(...)' #1189</a>
+     */
+    ActionUtil.performActionDumbAwareWithCallbacks(
+      SuggestJcvReplacementAction(),
+      AnActionEvent.createEvent(
+        dataContext,
+        null,
+        "",
+        ActionUiKind.POPUP,
+        null
       )
-    }
+    )
   }
 }

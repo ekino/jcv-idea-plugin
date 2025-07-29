@@ -10,6 +10,7 @@
 ### Fixed
 
 - **Intention definition** - Add missing `JSON` language to JCV replacement intention configuration.
+- **API usage** - Remove "override-only" api usage and deprecated ones.
 
 ## [3.0.3] - 2025-07-24
 
