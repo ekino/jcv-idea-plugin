@@ -5,8 +5,6 @@ import com.ekino.oss.jcv.idea.plugin.language.JcvUtil
 import com.intellij.ide.DataManager
 import com.intellij.json.psi.JsonPsiUtil
 import com.intellij.json.psi.JsonValue
-import com.intellij.openapi.actionSystem.ActionUiKind
-import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.ex.ActionUtil
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
@@ -35,15 +33,12 @@ class JcvReplacementIntention : JcvBaseIntentionAction() {
     /*
      * @see <a href="https://github.com/OpenLiberty/liberty-tools-intellij/issues/1189#issuecomment-255648446">Address override-only method usage violation in 'LibertyGeneralAction.actionPerformed(...)' #1189</a>
      */
-    ActionUtil.performActionDumbAwareWithCallbacks(
+    ActionUtil.invokeAction(
       SuggestJcvReplacementAction(),
-      AnActionEvent.createEvent(
-        dataContext,
-        null,
-        "",
-        ActionUiKind.POPUP,
-        null
-      )
+      dataContext,
+      "",
+      null,
+      null
     )
   }
 }
