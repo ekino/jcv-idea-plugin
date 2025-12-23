@@ -1,7 +1,7 @@
 package com.ekino.oss.jcv.idea.plugin.definition.custom
 
 import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.PropertyNamingStrategy
+import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.intellij.openapi.project.Project
@@ -12,7 +12,7 @@ import java.nio.file.Path
 
 private val objectMapper by lazy {
   jacksonObjectMapper().also {
-    it.propertyNamingStrategy = PropertyNamingStrategy.SNAKE_CASE
+    it.propertyNamingStrategy = PropertyNamingStrategies.SNAKE_CASE
     it.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
   }
 }
