@@ -11,6 +11,7 @@
   - Kotlin: `2.2.0` → `2.2.21`
   - Kover: `0.9.1` → `0.9.3`
   - Qodana: `2025.1.1` → `2025.2.2`
+  - Jackson: `2.11.+` → `2.17.+` (to support new PropertyNamingStrategies API)
 - **Build tooling** – Upgraded Gradle Wrapper to `9.2.1` (major version upgrade from 8.x).
 - **GitHub Actions** – Updated all action versions to v5 (from v4):
   - `actions/checkout@v5`
@@ -22,12 +23,9 @@
 ### Fixed
 
 - **Deprecated API** – Replaced deprecated `ActionUtil.performActionDumbAwareWithCallbacks` with `ActionUtil.invokeAction` in `JcvReplacementIntention`.
-
-### Known Issues
-
-- Two deprecation warnings remain (to be addressed in future releases):
-  - Jackson's `PropertyNamingStrategy.SNAKE_CASE` is deprecated
-  - `ActionUtil.invokeAction` overload used is deprecated (newer signature recommended)
+- **Jackson deprecation** – Replaced deprecated `PropertyNamingStrategy.SNAKE_CASE` with `PropertyNamingStrategies.SNAKE_CASE` in `ValidatorDescriptionsResolver`.
+- **ActionUtil deprecation** – Updated `ActionUtil.invokeAction` to use the modern 3-parameter signature with proper `AnActionEvent` construction.
+- **Template presentation warning** – Fixed "Template presentations must not be used directly" warning by creating new `Presentation` instances.
 
 ## [3.0.4] - 2025-07-29
 
