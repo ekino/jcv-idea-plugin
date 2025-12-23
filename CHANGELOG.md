@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 3.0.5 - 2025-12-23
+
 ### Changed
 
 - **IntelliJ Platform Plugin Template** – Upgraded IntelliJ Platform Plugin Template to [`v2.4.0`](https://github.com/JetBrains/intellij-platform-plugin-template/releases/tag/v2.4.0).
